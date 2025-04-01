@@ -10,6 +10,7 @@
 - **SOLID Principles** – Ensures maintainability and flexibility.
 - **Separation of Concerns** – Divides the project into well-defined layers.
 - **Testing Friendly** – Unit and integration tests supported.
+- **API-First Approach** — Fully documented with OpenAPI for seamless integration.
 
 ### **Upcoming Features ✨**
 
