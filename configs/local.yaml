@@ -1,0 +1,11 @@
+server:
+  name: "Note backend clean architecture"
+  port: 8080
+
+database:
+  host: "localhost"
+  userName: "postgres"
+  password: "root"
+  dataBaseName: "notes"
+  dialect: "postgres"
+  port: "5432"
