@@ -27,6 +27,8 @@
 - **[Sqlx](https://github.com/jmoiron/sqlx/)**
 - **[Oapi-codegen](https://github.com/oapi-codegen/runtime/)**
 - **[Postgres](https://www.postgresql.org/)**
+- **[Swagger-ui](https://github.com/swagger-api/swagger-ui/)**
+- **[Openapi 3](https://spec.openapis.org/oas/v3.1.0.html#composition-and-inheritance-polymorphism/)**
 
 ## 📂 Project Structure
 ```plaintext
