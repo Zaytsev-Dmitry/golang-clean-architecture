@@ -29,7 +29,7 @@
 
 ## 📂 Project Structure
 ```plaintext
-📦 project-root                    # Root directory of the project
+📦project-root                     # Root directory of the project
 ├── api                            # API interfaces of the project
 │   └── http                       # HTTP API (Swagger, OpenAPI, and other specifications)
 │       ├── note-api-web.gen.go    # Automatically generated API code
