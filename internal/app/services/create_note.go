@@ -4,7 +4,7 @@ import (
 	"golang-clean-architecture/internal/app/domain"
 	noteDao "golang-clean-architecture/internal/app/ports/out/dao"
 	"golang-clean-architecture/internal/app/ports/out/dao/dto"
-	"golang-clean-architecture/pkg"
+	"golang-clean-architecture/pkg/errors"
 )
 
 type CreateNoteUCase struct {
@@ -14,7 +14,7 @@ type CreateNoteUCase struct {
 func (c CreateNoteUCase) CreateAndSave(dto dto.CreateNoteDto) (*domain.Note, error) {
 	save, err := c.dao.NoteRepo.Save(dto)
 	if err != nil {
-		return nil, pkg.UpdateErrorText(err.Action, err.Err)
+		return nil, errors.UpdateErrorText(err.Action, err.Err)
 	}
 	return save, nil
 }

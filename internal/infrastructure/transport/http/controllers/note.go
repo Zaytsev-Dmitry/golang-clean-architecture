@@ -7,7 +7,7 @@ import (
 	"golang-clean-architecture/internal/app/ports/in/delegate"
 	noteDao "golang-clean-architecture/internal/app/ports/out/dao"
 	"golang-clean-architecture/internal/infrastructure/transport/http/presenters"
-	"golang-clean-architecture/pkg"
+	"golang-clean-architecture/pkg/marshalling"
 )
 
 type NoteController struct {
@@ -17,17 +17,17 @@ type NoteController struct {
 func (cntr *NoteController) SaveNote(c *gin.Context) {
 	var req openapi.CreateNoteRequest
 
-	if err := pkg.HandleMarshalling(c, &req); err != nil {
+	if err := marshalling.HandleMarshalling(c, &req); err != nil {
 		return
 	}
 
-	pkg.HandleResponse(c, func() (*domain.Note, error) {
+	marshalling.HandleResponse(c, func() (*domain.Note, error) {
 		return cntr.delegate.CreateAndSave(presenters.PresentToReq(req))
 	}, presenters.PresentToResp)
 }
 
 func (cntr *NoteController) GetNotesById(c *gin.Context, id int64) {
-	pkg.HandleResponse(c, func() (*domain.Note, error) {
+	marshalling.HandleResponse(c, func() (*domain.Note, error) {
 		return cntr.delegate.GetById(id)
 	}, presenters.PresentToResp)
 }

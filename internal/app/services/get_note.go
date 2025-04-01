@@ -5,7 +5,7 @@ import (
 	"errors"
 	"golang-clean-architecture/internal/app/domain"
 	noteDao "golang-clean-architecture/internal/app/ports/out/dao"
-	"golang-clean-architecture/pkg"
+	errors2 "golang-clean-architecture/pkg/errors"
 )
 
 type GetNoteUCase struct {
@@ -17,9 +17,9 @@ func (c GetNoteUCase) GetById(id int64) (*domain.Note, error) {
 	var wrappedErr error
 	if err != nil {
 		if errors.Is(err.Err, sql.ErrNoRows) {
-			wrappedErr = pkg.RowNotFound
+			wrappedErr = errors2.RowNotFound
 		}
-		return nil, pkg.UpdateErrorText(err.Action, wrappedErr)
+		return nil, errors2.UpdateErrorText(err.Action, wrappedErr)
 	}
 	return save, nil
 }

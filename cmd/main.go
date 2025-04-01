@@ -7,12 +7,12 @@ import (
 	"golang-clean-architecture/api/http"
 	noteDao "golang-clean-architecture/internal/app/ports/out/dao"
 	"golang-clean-architecture/internal/infrastructure/transport/http/handlers"
-	"golang-clean-architecture/pkg"
+	"golang-clean-architecture/pkg/config_loader"
 	"log"
 )
 
 func main() {
-	config := pkg.LoadConfig()
+	config := config_loader.LoadConfig()
 	fmt.Printf("%s!\n", config.Server.Name)
 
 	dao, db := noteDao.Create(config)

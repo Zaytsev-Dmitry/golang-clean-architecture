@@ -5,7 +5,7 @@ import (
 	openapi "golang-clean-architecture/api/http"
 	"golang-clean-architecture/internal/app/domain"
 	"golang-clean-architecture/internal/app/ports/out/dao/dto"
-	"golang-clean-architecture/pkg"
+	"golang-clean-architecture/pkg/utils"
 	"time"
 )
 
@@ -27,8 +27,8 @@ func PresentToResp(note *domain.Note, context *gin.Context) any {
 
 func PresentToReq(req openapi.CreateNoteRequest) dto.CreateNoteDto {
 	return dto.CreateNoteDto{
-		Description: pkg.GetStringOrDefault(req.Description, ""),
-		Link:        pkg.GetStringOrDefault(req.Link, ""),
-		Name:        pkg.GetStringOrDefault(req.Name, ""),
+		Description: utils.GetStringOrDefault(req.Description, ""),
+		Link:        utils.GetStringOrDefault(req.Link, ""),
+		Name:        utils.GetStringOrDefault(req.Name, ""),
 	}
 }

@@ -5,7 +5,7 @@ import (
 	"golang-clean-architecture/internal/app/domain"
 	"golang-clean-architecture/internal/app/ports/out/dao/dto"
 	"golang-clean-architecture/internal/app/ports/out/dao/queries"
-	"golang-clean-architecture/pkg"
+	"golang-clean-architecture/pkg/errors"
 	"strconv"
 )
 
@@ -18,7 +18,7 @@ type Repository struct {
 	db *sqlx.DB
 }
 
-func (n *Repository) Save(dto dto.CreateNoteDto) (*domain.Note, *pkg.CustomError) {
+func (n *Repository) Save(dto dto.CreateNoteDto) (*domain.Note, *errors.CustomError) {
 	return n.executeQuery(
 		QueryRowx,
 		queries.InsertNoteQuery,
@@ -27,7 +27,7 @@ func (n *Repository) Save(dto dto.CreateNoteDto) (*domain.Note, *pkg.CustomError
 	)
 }
 
-func (n *Repository) GetNoteById(id int64) (*domain.Note, *pkg.CustomError) {
+func (n *Repository) GetNoteById(id int64) (*domain.Note, *errors.CustomError) {
 	return n.executeQuery(
 		Get,
 		queries.SelectNoteByID,
@@ -36,7 +36,7 @@ func (n *Repository) GetNoteById(id int64) (*domain.Note, *pkg.CustomError) {
 	)
 }
 
-func (r *Repository) executeQuery(queryType string, query, action string, args ...interface{}) (*domain.Note, *pkg.CustomError) {
+func (r *Repository) executeQuery(queryType string, query, action string, args ...interface{}) (*domain.Note, *errors.CustomError) {
 	var err error
 	var note domain.Note
 
@@ -58,8 +58,8 @@ func (r *Repository) executeQuery(queryType string, query, action string, args .
 	return &note, nil
 }
 
-func (n *Repository) handleQueryError(err error, action string) *pkg.CustomError {
-	return pkg.New(action, err)
+func (n *Repository) handleQueryError(err error, action string) *errors.CustomError {
+	return errors.New(action, err)
 }
 
 func New(db *sqlx.DB) *Repository {

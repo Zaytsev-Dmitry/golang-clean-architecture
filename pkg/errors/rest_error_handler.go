@@ -1,4 +1,4 @@
-package pkg
+package errors
 
 import (
 	"encoding/json"
@@ -16,7 +16,7 @@ var (
 	MarshallError   = errors.New("ошибка маршалинга")
 )
 
-func handleError(c *gin.Context, err error) {
+func HandleError(c *gin.Context, err error) {
 	log.Printf(err.Error())
 	status, msg := getErrorMsgAndStatus(err)
 	responseError := getErrorDto(msg, status, c)
@@ -46,7 +46,7 @@ func getErrorDto(err string, errorCode int, context *gin.Context) openapi.Backen
 	}
 }
 
-func setResponseError(context *gin.Context, err error) {
+func SetResponseError(context *gin.Context, err error) {
 	var status int
 	msg := "Oops...что то пошло не так"
 

@@ -1,4 +1,4 @@
-package pkg
+package config_loader
 
 import (
 	"github.com/ilyakaznacheev/cleanenv"

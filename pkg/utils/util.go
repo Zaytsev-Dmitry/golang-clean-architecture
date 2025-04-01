@@ -1,4 +1,4 @@
-package pkg
+package utils
 
 func GetStringOrDefault(str *string, defaultVal string) string {
 	if str != nil {

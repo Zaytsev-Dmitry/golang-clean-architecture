@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	"golang-clean-architecture/internal/app/ports/out/dao/repository/note"
-	"golang-clean-architecture/pkg"
+	"golang-clean-architecture/pkg/config_loader"
 	"os"
 )
 
@@ -12,7 +12,7 @@ type Dao struct {
 	NoteRepo note.Repository
 }
 
-func newDbConnection(config *pkg.AppConfig) *sqlx.DB {
+func newDbConnection(config *config_loader.AppConfig) *sqlx.DB {
 	dbURL := fmt.Sprintf(
 		"postgres://%s:%s@%s:5432/%s?sslmode=disable",
 		config.Database.Username,
@@ -28,7 +28,7 @@ func newDbConnection(config *pkg.AppConfig) *sqlx.DB {
 	return db
 }
 
-func Create(config *pkg.AppConfig) (*Dao, *sqlx.DB) {
+func Create(config *config_loader.AppConfig) (*Dao, *sqlx.DB) {
 	db := newDbConnection(config)
 	return &Dao{
 		NoteRepo: *note.New(db),
