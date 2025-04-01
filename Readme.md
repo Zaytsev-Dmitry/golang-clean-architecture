@@ -1,6 +1,7 @@
 # Golang Clean Architecture
 
 ![Go Version](https://img.shields.io/badge/Go-1.24-blue)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https://github.com/Zaytsev-Dmitry/golang-clean-architecture&label=Repository%20Visits&countColor=%230c7ebe&style=flat&labelStyle=none)
 
 🚀 **Golang Clean Architecture** is a highly scalable, maintainable, and testable project structure following SOLID principles and best practices. This repository is designed to help developers build robust applications with a clean separation of concerns.
 
